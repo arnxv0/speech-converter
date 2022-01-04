@@ -7,7 +7,10 @@
   
 import speech_recognition as sr
 import pyttsx3 
-  
+
+# install pyaudio
+# pip install sounddevice
+
 # Initialize the recognizer 
 r = sr.Recognizer() 
   
@@ -19,7 +22,7 @@ def SpeakText(command):
     engine = pyttsx3.init()
     engine.say(command) 
     engine.runAndWait()
-      
+
       
 # Loop infinitely for user to
 # speak
@@ -41,7 +44,7 @@ while(1):
             # wait for a second to let the recognizer
             # adjust the energy threshold based on
             # the surrounding noise level 
-            r.adjust_for_ambient_noise(source2, duration=0.2)
+            r.adjust_for_ambient_noise(source2, duration=3)
               
             #listens for the user's input 
             audio2 = r.listen(source2)
