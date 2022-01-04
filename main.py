@@ -4,7 +4,8 @@
 # https://vb-audio.com/Voicemeeter/index.htm
 # https://rogueamoeba.com/loopback/
 # https://www.planetradiocity.com/how-to-play-desktop-audio-through-mic
-  
+# https://vb-audio.com/Cable/index.htm
+
 import speech_recognition as sr
 import pyttsx3 
 
