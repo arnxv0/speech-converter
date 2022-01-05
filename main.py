@@ -1,5 +1,11 @@
+# pyinstaller.exe --onefile -w --hidden-import=pyaudio --hidden-import=google-cloud-speech --hidden-import=google-api-python-client App.py
+# pyinstaller.exe App.py
+# pyinstaller.exe -w App.py
+
 # Python program to translate
 # speech to text and text to speech
+# https://pypi.org/project/pynput/
+# https://www.reddit.com/r/Python/comments/bdcz7m/the_exe_module_aint_doing_fine/
 
 # https://vb-audio.com/Voicemeeter/index.htm
 # https://rogueamoeba.com/loopback/
@@ -11,6 +17,9 @@ import pyttsx3
 
 # install pyaudio
 # pip install sounddevice
+# pip install google-cloud-speech
+# pip install google-api-python-client
+
 
 # Initialize the recognizer 
 r = sr.Recognizer() 
@@ -21,7 +30,15 @@ def SpeakText(command):
     
     # Initialize the engine
     engine = pyttsx3.init()
-    engine.say(command) 
+    voiceId = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\IVONA 2 Voice Justin22"
+    engine.setProperty('voice', voiceId)
+    engine. setProperty("rate", 178)
+    engine.say(command)
+    # voices = engine.getProperty('voices')
+    # for voice in voices:
+    #     engine.setProperty('voice', voice.id) # changes the voice
+    #     print(voice.id)  
+    #     engine.say(command)
     engine.runAndWait()
 
       
@@ -31,8 +48,7 @@ def SpeakText(command):
 for index, name in enumerate(sr.Microphone.list_microphone_names()):
     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
   
-while(1):    
-      
+while(1):
     # Exception handling to handle
     # exceptions at the runtime
     print("======Start======")
@@ -66,3 +82,16 @@ while(1):
     
     except Exception as e:
         print(e)
+
+
+
+
+# import pyttsx3
+
+# engine = pyttsx3.init('sapi5')
+# voices = engine.getProperty('voices')
+# engine.setProperty('rate', 80)
+# for voice in voices:
+#    engine.setProperty('voice', voice.id)
+#    engine.say('<pitch middle="10">Hello there! I am Friday</pitch>')
+# engine.runAndWait()
