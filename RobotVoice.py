@@ -38,10 +38,10 @@ cbo_voice = ttk.Combobox(root, textvariable=current_voice, values=modified_voice
 cbo_voice.grid(row=1, column=0, columnspan=2, padx=(25,60), pady=(10,30))
 
 mtr_speed = ttk.Meter(metersize=230, padding=5, amountused=90, metertype="semi", subtext="Speed", interactive=True, bootstyle="primary")
-mtr_pitch = ttk.Meter(metersize=230, padding=5, amountused=75, metertype="semi", subtext="Pitch", interactive=True, bootstyle="warning")
+mtr_noise = ttk.Meter(metersize=230, padding=5, amountused=75, metertype="semi", subtext="Noise threshold", interactive=True, bootstyle="warning")
 
 mtr_speed.grid(row=2, column=0, padx=(60,25))
-mtr_pitch.grid(row=2, column=1, padx=(25,60))
+mtr_noise.grid(row=2, column=1, padx=(25,60))
 
 lbl_volume = ttk.Label(root, text="Volume", font=('Lato',10), bootstyle="info")
 lbl_volume.grid(row=3, column=0, padx=50, columnspan=2)
@@ -60,8 +60,8 @@ ent_text.grid(row=5, column=1, padx=(0,100), pady=(0,0))
 def getSpeedLevel():
     return mtr_speed.amountusedvar.get()
 
-def getPitchLevel():
-    return mtr_pitch.amountusedvar.get()
+def getNoiseLevel():
+    return mtr_noise.amountusedvar.get()
 
 def getVoiceLevel():
     return mtr_voice.amountusedvar.get()
@@ -110,7 +110,7 @@ def readText():
     mtr_voice.configure(subtext="Standby", amountused=0)
 
 def startBtnCommand():
-    noiseDuration = 3
+    noiseDuration = getNoiseLevel() / 30
     # print("======Start======")
 
     mtr_voice.configure(subtext="Loading...", amountused=0)

@@ -1,6 +1,7 @@
 # pyinstaller.exe --onefile -w --hidden-import=pyaudio --hidden-import=google-cloud-speech --hidden-import=google-api-python-client App.py
 # pyinstaller.exe App.py
-# pyinstaller.exe -w App.py
+# pyinstaller.exe --icon=icon.ico -w RobotVoice.py
+# pyinstaller.exe -w RobotVoice.py
 
 # Python program to translate
 # speech to text and text to speech
